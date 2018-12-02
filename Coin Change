@@ -1,0 +1,21 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+int main()
+{
+    ll n,m;    cin>>n>>m;
+    ll S[m];
+    for(ll i=0;i<m;i++)
+        cin>>S[i];
+    ll table[n+1]={0};
+    table[0]=1;
+    for(ll i=0;i<m;i++)
+    {
+        for(ll j=S[i];j<=n;j++)
+        {
+            table[j]+=table[j-S[i]];
+        }
+    }
+    cout<<table[n]<<endl;
+    return 0;
+}
