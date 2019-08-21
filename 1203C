@@ -1,0 +1,38 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long int ll;
+
+ll gcd(ll a, ll b)
+{
+    if(b == 0)
+        return a;
+    return gcd(b, a%b);
+}
+
+ll calculateNumDivisors(ll hcm)
+{
+    ll ans = 0;
+    ll sqroot = sqrt(hcm);
+    if(sqroot * sqroot == hcm)
+        ans =1;
+    for(ll i=1;i<=sqroot;i++)
+    {
+        if(hcm%i==0 && i*i!=hcm)
+            ans+= 2;
+    }
+    return ans;
+}
+
+int main()
+{
+    ll n;   cin>>n;
+    ll a[n];
+    for(ll i=0;i<n;i++)
+        cin>>a[i];
+    ll hcm = a[0];
+    for(ll i=1;i<n;i++)
+        hcm = gcd (hcm, a[i]);
+    ll numDivisors = calculateNumDivisors(hcm);
+    cout<<numDivisors<<endl;
+    return 0;
+}
