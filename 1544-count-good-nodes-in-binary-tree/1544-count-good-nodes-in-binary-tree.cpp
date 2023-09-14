@@ -19,13 +19,14 @@ public:
   }
 
   void helper(TreeNode* root, ll& c, ll mx) {
-    if(root) {
-      if(root->val >= mx) {
-        mx = root->val;
-        c++;
-      }
-      helper(root->left, c, mx);
-      helper(root->right, c, mx);
+    if(!root) {
+      return;
     }
+    if(root->val >= mx) {
+      mx = root->val;
+      c++;
+    }
+    helper(root->left, c, mx);
+    helper(root->right, c, mx);
   }
 };
