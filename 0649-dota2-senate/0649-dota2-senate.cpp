@@ -31,14 +31,16 @@ public:
             // cout<<"char is "<<c<<" "<<radiant<<" "<<dire<<endl;
             q.pop();
             if(c=='R') {
+                //if 'R' is banned, decreasing count by 1 and skipping its turn
                 if(rb > 0) {
                     rb--;
                     continue;
                 }
+                //banning 'Dire' and decreasing its count
                 dire--;
                 db++;
+                //keeping 'R in game to wait for his next turn.
                 q.push(c);
-                // radiant++;
             } else {
                 if(db > 0) {
                     db--;
@@ -47,12 +49,10 @@ public:
                 rb++;
                 radiant--;
                 q.push(c);
-                // dire++;
             }
            
         }
-        // cout<<radiant<<" "<<dire<<" "<<rb<<" "<<db<<endl;
-        return db > rb and radiant > dire ? "Radiant" : "Dire";
+        return db > rb ? "Radiant" : "Dire";
         
     }
 };
