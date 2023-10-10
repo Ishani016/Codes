@@ -11,16 +11,17 @@ public:
         ll n = points.size();
         sort(points.begin(), points.end(), cmp);
         for(ll i=0;i<n;i++) {
-            cout<<points[i][0]<<" "<<points[i][1]<<endl;
+            // cout<<points[i][0]<<" "<<points[i][1]<<endl;
         }
         ll c = 1;
-        ll temp = points[0][1], i=1;
-        while(i<n) {
-            // cout<<"inside while for: "<<i<<" "<<points[i][0]<<" "<<temp<<endl;
-            if(points[i][0] > temp) {
-                // cout<<"updating count for "<<points[i][0]<<" "<<temp<<endl;
+        ll temp = points[0][1];
+        for(ll i=1;i<n;) {
+            // cout<<"i is:"<<i<<endl;
+            while(i<n and points[i][0]>temp) {
+                // cout<<"inside while for: "<<i<<endl;
                 c++;
                 temp = points[i][1];
+                i++;
             }
             i++;
         }
